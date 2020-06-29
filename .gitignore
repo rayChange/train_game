@@ -4,3 +4,4 @@ train.iml
 .idea/workspace.xml
 out/production/train/T$1.class
 out/production/train/T.class
+*.xml
