@@ -87,10 +87,16 @@ public class TrainFrame extends Frame {
 
 //
         public void setTrainDir(){
-            if(isRedUp) mTrain.setDir(DirEnum.UP);
-            if(isRedDown) mTrain.setDir(DirEnum.DOWN);
-            if(isRedLeft) mTrain.setDir(DirEnum.LEFT);
-            if(isRedRight) mTrain.setDir(DirEnum.RIGHT);
+            if(!isRedRight && !isRedLeft && !isRedDown && !isRedUp) {
+                mTrain.setIsMove(false);
+            }else{
+                mTrain.setIsMove(true);
+                if(isRedUp) mTrain.setDir(DirEnum.UP);
+                if(isRedDown) mTrain.setDir(DirEnum.DOWN);
+                if(isRedLeft) mTrain.setDir(DirEnum.LEFT);
+                if(isRedRight) mTrain.setDir(DirEnum.RIGHT);
+            }
+
 
         }
 

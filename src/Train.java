@@ -2,15 +2,17 @@ import java.awt.*;
 
 public class Train {
 
-    private int x = 200;
+    private int x ;
 
-    private int y =200;
+    private int y ;
 
     private int height;
 
     private int width;
 
     DirEnum dir = DirEnum.DOWN;
+
+    private boolean isMove = false;
 
     final int SPEED = 1;
 
@@ -28,6 +30,7 @@ public class Train {
 
     public void paint(Graphics g){
         g.fillRect(x,y,width,height);
+        if (!isMove) return;
         switch (dir){
             case UP:
                 y -= SPEED;
@@ -48,5 +51,9 @@ public class Train {
 
     public void setDir(DirEnum dir){
         this.dir = dir;
+    }
+
+    public void setIsMove(boolean isMove){
+        this.isMove = isMove;
     }
 }
