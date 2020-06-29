@@ -10,6 +10,9 @@ public class TrainFrame extends Frame {
 
     private int y =200;
 
+    DirEnum dir = DirEnum.DOWN;
+
+    final int SPEED = 1;
 
     public TrainFrame(){
         setSize(300,400);
@@ -23,44 +26,101 @@ public class TrainFrame extends Frame {
                 System.exit(0);
             }
         });
+
     }
 
     @Override
     public void paint(Graphics g) {
-        System.out.println("paint");
-//        x+=20;
-//        y+=20;
+//        System.out.println("paint");
         g.fillRect(x,y,20,20);
+
+        switch (dir){
+            case UP:
+                y -= SPEED;
+                break;
+            case DOWN:
+                y += SPEED;
+                break;
+            case LEFT:
+                x -= SPEED;
+                break;
+            case RIGHT:
+                x += SPEED;
+                break;
+            default:
+                break;
+        }
+
     }
 
 
     class MykeyListen extends KeyAdapter{
+
+        boolean isRedUp = false;
+        boolean isRedDown = false;
+        boolean isRedLeft = false;
+        boolean isRedRight = false;
+
+
+
         @Override
         public void keyPressed(KeyEvent e) {
             int keycode = e.getKeyCode();
             switch (keycode){
                 case KeyEvent.VK_UP:
-                    y-=10;
+                    isRedUp = true;
                     break;
                 case KeyEvent.VK_DOWN:
-                    y+=10;
+                    isRedDown = true;
                     break;
                 case KeyEvent.VK_LEFT:
-                    x-=10;
+                    isRedLeft= true;
                     break;
                 case KeyEvent.VK_RIGHT:
-                    x+=10;
+                    isRedRight = true;
                     break;
                 default:
                     break;
             }
+            setTrainDir();
 
         }
 
         @Override
         public void keyReleased(KeyEvent e) {
-            System.out.println("release");
+            int keycode = e.getKeyCode();
+            switch (keycode){
+                case KeyEvent.VK_UP:
+                    isRedUp = false;
+                    break;
+                case KeyEvent.VK_DOWN:
+                    isRedDown = false;
+                    break;
+                case KeyEvent.VK_LEFT:
+                    isRedLeft= false;
+                    break;
+                case KeyEvent.VK_RIGHT:
+                    isRedRight = false;
+                    break;
+                default:
+                    break;
+            }
+            setTrainDir();
         }
+
+//
+        public void setTrainDir(){
+            if(isRedUp) dir = DirEnum.UP;
+            if(isRedDown) dir = DirEnum.DOWN;
+            if(isRedLeft) dir = DirEnum.LEFT;
+            if(isRedRight) dir = DirEnum.RIGHT;
+
+        }
+
+
+
+
+
     }
 
 
