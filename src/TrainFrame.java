@@ -6,13 +6,7 @@ import java.awt.event.WindowEvent;
 
 public class TrainFrame extends Frame {
 
-    private int x = 200;
-
-    private int y =200;
-
-    DirEnum dir = DirEnum.DOWN;
-
-    final int SPEED = 1;
+    Train mTrain = new Train(200,200,50,50);
 
     public TrainFrame(){
         setSize(300,400);
@@ -32,24 +26,7 @@ public class TrainFrame extends Frame {
     @Override
     public void paint(Graphics g) {
 //        System.out.println("paint");
-        g.fillRect(x,y,20,20);
-
-        switch (dir){
-            case UP:
-                y -= SPEED;
-                break;
-            case DOWN:
-                y += SPEED;
-                break;
-            case LEFT:
-                x -= SPEED;
-                break;
-            case RIGHT:
-                x += SPEED;
-                break;
-            default:
-                break;
-        }
+        mTrain.paint(g);
 
     }
 
@@ -110,10 +87,10 @@ public class TrainFrame extends Frame {
 
 //
         public void setTrainDir(){
-            if(isRedUp) dir = DirEnum.UP;
-            if(isRedDown) dir = DirEnum.DOWN;
-            if(isRedLeft) dir = DirEnum.LEFT;
-            if(isRedRight) dir = DirEnum.RIGHT;
+            if(isRedUp) mTrain.setDir(DirEnum.UP);
+            if(isRedDown) mTrain.setDir(DirEnum.DOWN);
+            if(isRedLeft) mTrain.setDir(DirEnum.LEFT);
+            if(isRedRight) mTrain.setDir(DirEnum.RIGHT);
 
         }
 
