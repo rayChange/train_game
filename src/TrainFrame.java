@@ -28,7 +28,7 @@ public class TrainFrame extends Frame {
     @Override
     public void paint(Graphics g) {
         System.out.println("paint");
-        x+=20;
+//        x+=20;
 //        y+=20;
         g.fillRect(x,y,20,20);
     }
@@ -37,8 +37,24 @@ public class TrainFrame extends Frame {
     class MykeyListen extends KeyAdapter{
         @Override
         public void keyPressed(KeyEvent e) {
-            System.out.println("press");
-//            repaint();
+            int keycode = e.getKeyCode();
+            switch (keycode){
+                case KeyEvent.VK_UP:
+                    y-=10;
+                    break;
+                case KeyEvent.VK_DOWN:
+                    y+=10;
+                    break;
+                case KeyEvent.VK_LEFT:
+                    x-=10;
+                    break;
+                case KeyEvent.VK_RIGHT:
+                    x+=10;
+                    break;
+                default:
+                    break;
+            }
+
         }
 
         @Override
