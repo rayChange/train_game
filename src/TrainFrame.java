@@ -7,6 +7,7 @@ import java.awt.event.WindowEvent;
 public class TrainFrame extends Frame {
 
     Train mTrain = new Train(200,200,50,50);
+    Gas gas = new Gas(100,100,DirEnum.UP);
 
     public TrainFrame(){
         setSize(300,400);
@@ -27,6 +28,7 @@ public class TrainFrame extends Frame {
     public void paint(Graphics g) {
 //        System.out.println("paint");
         mTrain.paint(g);
+        gas.paint(g);
 
     }
 
