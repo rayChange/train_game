@@ -6,11 +6,15 @@ import java.awt.event.WindowEvent;
 
 public class TrainFrame extends Frame {
 
+    public static final int WIDTH = 300;
+    public static final int HEIGHT = 500;
+
+
     Train mTrain = new Train(200,200,50,50);
     Gas gas = new Gas(100,100,DirEnum.UP);
 
     public TrainFrame(){
-        setSize(300,400);
+        setSize(WIDTH,HEIGHT);
         setResizable(false);
         setVisible(true);
         setTitle("train start");
@@ -32,6 +36,21 @@ public class TrainFrame extends Frame {
 
     }
 
+    Image offScreenImage = null;
+    @Override
+    public void update(Graphics g){
+         if(offScreenImage == null){
+             offScreenImage = createImage(WIDTH,HEIGHT);
+         }
+         Graphics offScreenG = offScreenImage.getGraphics();
+         Color c = offScreenG.getColor();
+         offScreenG.setColor(Color.BLACK);
+         offScreenG.fillRect(0,0,WIDTH,HEIGHT);
+         offScreenG.setColor(c);
+         paint(offScreenG);
+         g.drawImage(offScreenImage,0,0,null);
+
+    }
 
     class MykeyListen extends KeyAdapter{
 

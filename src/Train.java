@@ -29,7 +29,11 @@ public class Train {
     }
 
     public void paint(Graphics g){
+        Color c = g.getColor();
+        g.setColor(Color.YELLOW);
         g.fillRect(x,y,width,height);
+        g.setColor(c);
+
         if (!isMove) return;
         switch (dir){
             case UP:
