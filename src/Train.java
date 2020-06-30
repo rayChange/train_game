@@ -70,6 +70,6 @@ public class Train {
     }
 
     public void tikatika(){
-        tf.gasList.add(new Gas(this.x,this.y,this.dir)) ;
+        tf.gasList.add(new Gas(this.x,this.y,this.dir,this.tf)) ;
     }
 }

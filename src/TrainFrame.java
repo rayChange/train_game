@@ -33,9 +33,14 @@ public class TrainFrame extends Frame {
     @Override
     public void paint(Graphics g) {
 //        System.out.println("paint");
+        Color c = g.getColor();
+        g.setColor(Color.WHITE);
+        g.drawString("gas num:"+gasList.size(),10,60);
+        g.setColor(c);
+        
         mTrain.paint(g);
-        for (Gas gas:gasList) {
-             gas.paint(g);
+        for (int i = 0 ;i<gasList.size()-1;i++) {
+             gasList.get(i).paint(g);
         }
     }
 

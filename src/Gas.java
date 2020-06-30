@@ -11,14 +11,24 @@ public class Gas {
 
     private final static int SPEED = 5;
 
-    public Gas(int x, int y, DirEnum dir) {
+    private boolean isAlive = true;
+
+    TrainFrame tf;
+
+    public Gas(int x, int y, DirEnum dir,TrainFrame tf) {
         this.x = x;
         this.y = y;
         this.dir = dir;
+        this.tf = tf;
     }
 
 
+
+
     public void paint(Graphics g){
+        if(!isAlive){
+            tf.gasList.remove(this);
+        }
         Color c = g.getColor();
         g.setColor(Color.RED);
         g.fillOval(x,y,WIDTH,HEIGHT);
@@ -39,6 +49,8 @@ public class Gas {
             default:
                 break;
         }
+
+        if(x<0 || y<0 || x>TrainFrame.WIDTH || y>TrainFrame.HEIGHT) isAlive = false;
     }
 
     public int getX() {
@@ -64,4 +76,6 @@ public class Gas {
     public void setDir(DirEnum dir) {
         this.dir = dir;
     }
+
+
 }
