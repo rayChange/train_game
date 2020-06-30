@@ -3,6 +3,8 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TrainFrame extends Frame {
 
@@ -11,7 +13,7 @@ public class TrainFrame extends Frame {
 
 
     Train mTrain = new Train(200,200,this);
-    Gas gas = new Gas(100,100,DirEnum.UP);
+    List<Gas> gasList = new ArrayList<Gas>(3);
 
     public TrainFrame(){
         setSize(WIDTH,HEIGHT);
@@ -32,8 +34,9 @@ public class TrainFrame extends Frame {
     public void paint(Graphics g) {
 //        System.out.println("paint");
         mTrain.paint(g);
-        gas.paint(g);
-
+        for (Gas gas:gasList) {
+             gas.paint(g);
+        }
     }
 
     Image offScreenImage = null;
