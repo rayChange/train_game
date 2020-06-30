@@ -10,7 +10,7 @@ public class TrainFrame extends Frame {
     public static final int HEIGHT = 500;
 
 
-    Train mTrain = new Train(200,200,50,50);
+    Train mTrain = new Train(200,200,this);
     Gas gas = new Gas(100,100,DirEnum.UP);
 
     public TrainFrame(){
@@ -77,6 +77,8 @@ public class TrainFrame extends Frame {
                 case KeyEvent.VK_RIGHT:
                     isRedRight = true;
                     break;
+                case KeyEvent.VK_CONTROL:
+                    mTrain.tikatika();
                 default:
                     break;
             }

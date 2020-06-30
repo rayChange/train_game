@@ -6,15 +6,17 @@ public class Train {
 
     private int y ;
 
-    private int height;
+    private int height = 50;
 
-    private int width;
+    private int width = 50;
 
     DirEnum dir = DirEnum.DOWN;
 
     private boolean isMove = false;
 
     final int SPEED = 1;
+
+    private TrainFrame tf;
 
     public Train(int x, int y) {
         this.x = x;
@@ -26,6 +28,12 @@ public class Train {
         this.y = y;
         this.height = height;
         this.width = width;
+    }
+
+    public Train(int x, int y, TrainFrame tf) {
+        this.x = x;
+        this.y = y;
+        this.tf = tf;
     }
 
     public void paint(Graphics g){
@@ -59,5 +67,9 @@ public class Train {
 
     public void setIsMove(boolean isMove){
         this.isMove = isMove;
+    }
+
+    public void tikatika(){
+        tf.gas = new Gas(this.x,this.y,this.dir);
     }
 }
